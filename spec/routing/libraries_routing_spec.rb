@@ -8,7 +8,7 @@ describe LibrariesController do
     end
 
     it "routes to #new" do
-      get("/libraries/new").should route_to("libraries#new")
+      get("/libraries/_new").should route_to("libraries#new")
     end
 
     it "routes to #show" do
@@ -16,7 +16,7 @@ describe LibrariesController do
     end
 
     it "routes to #edit" do
-      get("/libraries/1/edit").should route_to("libraries#edit", :id => "1")
+      get("/libraries/1/_edit").should route_to("libraries#edit", :id => "1")
     end
 
     it "routes to #create" do

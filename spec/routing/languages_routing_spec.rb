@@ -8,7 +8,7 @@ describe LanguagesController do
     end
 
     it "routes to #new" do
-      get("/languages/new").should route_to("languages#new")
+      get("/languages/_new").should route_to("languages#new")
     end
 
     it "routes to #show" do
@@ -16,7 +16,7 @@ describe LanguagesController do
     end
 
     it "routes to #edit" do
-      get("/languages/1/edit").should route_to("languages#edit", :id => "1")
+      get("/languages/1/_edit").should route_to("languages#edit", :id => "1")
     end
 
     it "routes to #create" do
