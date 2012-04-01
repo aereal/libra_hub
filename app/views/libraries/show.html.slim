@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @library.name
+p
+  strong Slug:
+  = @library.slug
+p
+  strong Language:
+  = @library.language
+
+= link_to 'Edit', edit_library_path(@library)
+'|
+= link_to 'Back', libraries_path
