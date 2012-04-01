@@ -122,7 +122,7 @@ describe LibrariesController do
 
       it "redirects to the library" do
         library = FactoryGirl.create(:library)
-        put :update, {:id => library.to_param, :library => valid_attributes}, valid_session
+        put :update, {:id => library.to_param, :library => library.attributes}, valid_session
         response.should redirect_to(library)
       end
     end
