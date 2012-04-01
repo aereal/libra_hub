@@ -5,6 +5,7 @@ gem 'rails', '3.2.3'
 gem 'jquery-rails'
 gem 'pg'
 gem 'slim-rails'
+gem 'friendly_id'
 
 group :development, :test do
   gem 'capybara'
