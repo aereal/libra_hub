@@ -1,5 +1,5 @@
 LibraHub::Application.routes.draw do
-  resources :languages
+  resources :languages, path_names: { new: '_new', edit: '_edit' }
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
