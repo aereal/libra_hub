@@ -110,8 +110,8 @@ describe LanguagesController do
         # specifies that the Language created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Language.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, {:id => language.to_param, :language => {'these' => 'params'}}, valid_session
+        Language.any_instance.should_receive(:update_attributes).with({'name' => 'params'})
+        put :update, {:id => language.to_param, :language => {'name' => 'params'}}, valid_session
       end
 
       it "assigns the requested language as @language" do
