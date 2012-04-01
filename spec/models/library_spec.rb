@@ -1,5 +1,17 @@
 require 'spec_helper'
 
 describe Library do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { FactoryGirl.build(:library) }
+
+  describe 'validations' do
+    context 'has no name' do
+      subject { FactoryGirl.build(:library, :nameless) }
+
+      it { should have(1).error_on(:name) }
+    end
+
+    context 'has name' do
+      it { should_not have(1).error_on(:name) }
+    end
+  end
 end
