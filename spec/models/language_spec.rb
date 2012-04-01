@@ -13,5 +13,19 @@ describe Language do
 
       it { should_not be_valid }
     end
+
+    context 'with unique name' do
+      let!(:exists_language) { FactoryGirl.create(:language) }
+
+      it { should be_valid }
+    end
+
+    context 'with duplicated name' do
+      subject { FactoryGirl.build(:language, name: exists_language.name) }
+
+      let!(:exists_language) { FactoryGirl.create(:language) }
+
+      it { should_not be_valid }
+    end
   end
 end
