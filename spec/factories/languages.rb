@@ -2,7 +2,6 @@
 
 FactoryGirl.define do
   factory :language do
-    name "MyString"
-    slug "MyString"
+    name { Forgery::Personal.language }
   end
 end
