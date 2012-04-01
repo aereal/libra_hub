@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120401130835) do
+ActiveRecord::Schema.define(:version => 20120401150121) do
 
   create_table "languages", :force => true do |t|
     t.string   "name"
@@ -19,5 +19,15 @@ ActiveRecord::Schema.define(:version => 20120401130835) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "libraries", :force => true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.integer  "language_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "libraries", ["language_id"], :name => "index_libraries_on_language_id"
 
 end
