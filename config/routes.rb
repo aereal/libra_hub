@@ -1,5 +1,5 @@
 LibraHub::Application.routes.draw do
-  resources :libraries
+  resources :libraries, path_names: { new: '_new', edit: '_edit' }
 
   resources :languages, path_names: { new: '_new', edit: '_edit' }
 
