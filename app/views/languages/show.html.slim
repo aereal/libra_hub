@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @language.name
+p
+  strong Slug:
+  = @language.slug
+
+= link_to 'Edit', edit_language_path(@language)
+'|
+= link_to 'Back', languages_path
