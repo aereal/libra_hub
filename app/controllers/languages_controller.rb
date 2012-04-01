@@ -1,4 +1,6 @@
 class LanguagesController < ApplicationController
+  before_filter :retrieve_language, except: [:index, :new, :create]
+
   # GET /languages
   # GET /languages.json
   def index
@@ -13,8 +15,6 @@ class LanguagesController < ApplicationController
   # GET /languages/1
   # GET /languages/1.json
   def show
-    @language = Language.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @language }
@@ -34,7 +34,7 @@ class LanguagesController < ApplicationController
 
   # GET /languages/1/edit
   def edit
-    @language = Language.find(params[:id])
+    #
   end
 
   # POST /languages
@@ -56,8 +56,6 @@ class LanguagesController < ApplicationController
   # PUT /languages/1
   # PUT /languages/1.json
   def update
-    @language = Language.find(params[:id])
-
     respond_to do |format|
       if @language.update_attributes(params[:language].slice(:name, :slug))
         format.html { redirect_to @language, notice: 'Language was successfully updated.' }
@@ -72,12 +70,16 @@ class LanguagesController < ApplicationController
   # DELETE /languages/1
   # DELETE /languages/1.json
   def destroy
-    @language = Language.find(params[:id])
     @language.destroy
 
     respond_to do |format|
       format.html { redirect_to languages_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+  def retrieve_language
+    @language = Language.find(params[:id])
   end
 end
