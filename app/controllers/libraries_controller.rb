@@ -40,7 +40,7 @@ class LibrariesController < ApplicationController
   # POST /libraries
   # POST /libraries.json
   def create
-    @library = Library.new(params[:library])
+    @library = Library.new(library_params)
 
     respond_to do |format|
       if @library.save
@@ -59,7 +59,7 @@ class LibrariesController < ApplicationController
     @library = Library.find(params[:id])
 
     respond_to do |format|
-      if @library.update_attributes(params[:library])
+      if @library.update_attributes(library_params)
         format.html { redirect_to @library, notice: 'Library was successfully updated.' }
         format.json { head :no_content }
       else
@@ -79,5 +79,10 @@ class LibrariesController < ApplicationController
       format.html { redirect_to libraries_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+  def library_params
+    params[:library].slice(:name, :slug)
   end
 end

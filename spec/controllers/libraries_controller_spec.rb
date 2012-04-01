@@ -110,8 +110,8 @@ describe LibrariesController do
         # specifies that the Library created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Library.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, {:id => library.to_param, :library => {'these' => 'params'}}, valid_session
+        Library.any_instance.should_receive(:update_attributes).with({'name' => 'params'})
+        put :update, {:id => library.to_param, :library => {'name' => 'params'}}, valid_session
       end
 
       it "assigns the requested library as @library" do
