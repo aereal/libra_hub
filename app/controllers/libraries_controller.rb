@@ -1,4 +1,6 @@
 class LibrariesController < ApplicationController
+  before_filter :retrieve_library, except: [:index, :new, :create]
+
   # GET /libraries
   # GET /libraries.json
   def index
@@ -13,8 +15,6 @@ class LibrariesController < ApplicationController
   # GET /libraries/1
   # GET /libraries/1.json
   def show
-    @library = Library.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @library }
@@ -34,7 +34,7 @@ class LibrariesController < ApplicationController
 
   # GET /libraries/1/edit
   def edit
-    @library = Library.find(params[:id])
+    #
   end
 
   # POST /libraries
@@ -56,8 +56,6 @@ class LibrariesController < ApplicationController
   # PUT /libraries/1
   # PUT /libraries/1.json
   def update
-    @library = Library.find(params[:id])
-
     respond_to do |format|
       if @library.update_attributes(library_params)
         format.html { redirect_to @library, notice: 'Library was successfully updated.' }
@@ -72,7 +70,6 @@ class LibrariesController < ApplicationController
   # DELETE /libraries/1
   # DELETE /libraries/1.json
   def destroy
-    @library = Library.find(params[:id])
     @library.destroy
 
     respond_to do |format|
@@ -82,6 +79,10 @@ class LibrariesController < ApplicationController
   end
 
   private
+  def retrieve_library
+    @library = Library.find(params[:id])
+  end
+
   def library_params
     params[:library].slice(:name, :slug)
   end
