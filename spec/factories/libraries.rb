@@ -4,5 +4,9 @@ FactoryGirl.define do
   factory :library do
     name { Forgery::Name.full_name }
     language
+
+    trait :nameless do
+      name ''
+    end
   end
 end
