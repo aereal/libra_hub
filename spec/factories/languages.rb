@@ -5,6 +5,10 @@ FactoryGirl.define do
     name { Forgery::Personal.language }
   end
 
+  trait :nameless do
+    name ''
+  end
+
   factory :nameless_language, parent: :language do
     name ''
   end

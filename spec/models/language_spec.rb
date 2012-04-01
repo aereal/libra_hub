@@ -9,7 +9,7 @@ describe Language do
     end
 
     context 'is nameless' do
-      subject { FactoryGirl.build(:nameless_language) }
+      subject { FactoryGirl.build(:language, :nameless) }
 
       it { should_not be_valid }
     end
