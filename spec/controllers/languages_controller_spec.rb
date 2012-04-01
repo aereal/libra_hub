@@ -24,7 +24,7 @@ describe LanguagesController do
   # Language. As you add validations to Language, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    FactoryGirl.attributes_for(:language)
   end
   
   # This should return the minimal set of values that should be in the session
@@ -36,7 +36,7 @@ describe LanguagesController do
 
   describe "GET index" do
     it "assigns all languages as @languages" do
-      language = Language.create! valid_attributes
+      language = FactoryGirl.create(:language)
       get :index, {}, valid_session
       assigns(:languages).should eq([language])
     end
@@ -44,7 +44,7 @@ describe LanguagesController do
 
   describe "GET show" do
     it "assigns the requested language as @language" do
-      language = Language.create! valid_attributes
+      language = FactoryGirl.create(:language)
       get :show, {:id => language.to_param}, valid_session
       assigns(:language).should eq(language)
     end
@@ -59,7 +59,7 @@ describe LanguagesController do
 
   describe "GET edit" do
     it "assigns the requested language as @language" do
-      language = Language.create! valid_attributes
+      language = FactoryGirl.create(:language)
       get :edit, {:id => language.to_param}, valid_session
       assigns(:language).should eq(language)
     end
@@ -105,7 +105,7 @@ describe LanguagesController do
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested language" do
-        language = Language.create! valid_attributes
+        language = FactoryGirl.create(:language)
         # Assuming there are no other languages in the database, this
         # specifies that the Language created on the previous line
         # receives the :update_attributes message with whatever params are
@@ -115,13 +115,13 @@ describe LanguagesController do
       end
 
       it "assigns the requested language as @language" do
-        language = Language.create! valid_attributes
+        language = FactoryGirl.create(:language)
         put :update, {:id => language.to_param, :language => valid_attributes}, valid_session
         assigns(:language).should eq(language)
       end
 
       it "redirects to the language" do
-        language = Language.create! valid_attributes
+        language = FactoryGirl.create(:language)
         put :update, {:id => language.to_param, :language => valid_attributes}, valid_session
         response.should redirect_to(language)
       end
@@ -129,7 +129,7 @@ describe LanguagesController do
 
     describe "with invalid params" do
       it "assigns the language as @language" do
-        language = Language.create! valid_attributes
+        language = FactoryGirl.create(:language)
         # Trigger the behavior that occurs when invalid params are submitted
         Language.any_instance.stub(:save).and_return(false)
         put :update, {:id => language.to_param, :language => {}}, valid_session
@@ -137,7 +137,7 @@ describe LanguagesController do
       end
 
       it "re-renders the 'edit' template" do
-        language = Language.create! valid_attributes
+        language = FactoryGirl.create(:language)
         # Trigger the behavior that occurs when invalid params are submitted
         Language.any_instance.stub(:save).and_return(false)
         put :update, {:id => language.to_param, :language => {}}, valid_session
@@ -148,14 +148,14 @@ describe LanguagesController do
 
   describe "DELETE destroy" do
     it "destroys the requested language" do
-      language = Language.create! valid_attributes
+      language = FactoryGirl.create(:language)
       expect {
         delete :destroy, {:id => language.to_param}, valid_session
       }.to change(Language, :count).by(-1)
     end
 
     it "redirects to the languages list" do
-      language = Language.create! valid_attributes
+      language = FactoryGirl.create(:language)
       delete :destroy, {:id => language.to_param}, valid_session
       response.should redirect_to(languages_url)
     end
