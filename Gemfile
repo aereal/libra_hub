@@ -4,6 +4,7 @@ gem 'rails', '3.2.3'
 
 gem 'jquery-rails'
 gem 'pg'
+gem 'slim-rails'
 
 group :development, :test do
   gem 'capybara'
