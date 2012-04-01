@@ -122,8 +122,7 @@ describe LanguagesController do
 
       it "redirects to the language" do
         language = FactoryGirl.create(:language)
-        valid_attributes = language.attributes
-        put :update, {:id => language.to_param, :language => valid_attributes}, valid_session
+        put :update, {:id => language.to_param, :language => language.attributes}, valid_session
         response.should redirect_to(language)
       end
     end
