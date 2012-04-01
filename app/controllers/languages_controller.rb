@@ -59,7 +59,7 @@ class LanguagesController < ApplicationController
     @language = Language.find(params[:id])
 
     respond_to do |format|
-      if @language.update_attributes(params[:language])
+      if @language.update_attributes(params[:language].slice(:name, :slug))
         format.html { redirect_to @language, notice: 'Language was successfully updated.' }
         format.json { head :no_content }
       else
