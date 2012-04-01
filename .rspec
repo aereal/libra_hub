@@ -1,3 +1,5 @@
 --colour
 --drb
 --drb-port 9002
+--fail-fast
+-r ./spec/spec_helper.rb
